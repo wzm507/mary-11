@@ -1,15 +1,17 @@
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropertyCard from '@/components/PropertyCard';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const MaryProjects = () => {
+  const { t } = useTranslation();
   // 生成16个Mary项目的卡片数据
   const maryProjects = Array.from({ length: 16 }, (_, i) => {
     const baseProject = {
       id: i + 1,
       address: "",
-      status: i % 3 === 0 ? "热销中" : "限量发售",
+      status: i % 3 === 0 ? t('maryProjects.hotSale') : t('maryProjects.limitedSale'),
     };
 
     // 第一个项目特殊处理
@@ -132,9 +134,9 @@ const MaryProjects = () => {
   return (
     <div className="py-20 px-4 max-w-7xl mx-auto bg-gray-50" id="mary-projects">
       <div className="mb-16 text-center">
-        <h2 className="text-4xl font-bold mb-4">Mary精选项目</h2>
+        <h2 className="text-4xl font-bold mb-4">{t('maryProjects.title')}</h2>
         <div className="w-24 h-1 bg-amber-500 mx-auto"></div>
-        <p className="text-gray-600 mt-4">Exclusive High-end Property Investment Opportunities</p>
+        <p className="text-gray-600 mt-4">{t('maryProjects.subtitle')}</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -146,30 +148,30 @@ const MaryProjects = () => {
       </div>
 
       <div className="mt-16 text-center">
-        <p className="text-gray-500 mb-4">找不到您心仪的房产？</p>
+        <p className="text-gray-500 mb-4">{t('maryProjects.noPropertyFound')}</p>
         <button 
           onClick={() => setIsContactDialogOpen(true)}
           className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg font-medium transition"
         >
-          联系Mary定制专属方案
+          {t('maryProjects.contactForCustomPlan')}
         </button>
       </div>
 
       <Dialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="text-center">联系Mary</DialogTitle>
+            <DialogTitle className="text-center">{t('maryProjects.contactMary')}</DialogTitle>
           </DialogHeader>
           <div className="text-center py-4">
             <p className="text-2xl font-bold mb-6">+971 52 7476335</p>
             <div className="flex justify-center mb-4">
               <img 
                 src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/%E7%94%BB%E6%9D%BF%209-g08mcpayb5nfd6fgjoqgmw6ib6b95j.png" 
-                alt="WeChat二维码" 
+                alt={t('maryProjects.scanQR')} 
                 className="w-48 h-48 object-cover"
               />
             </div>
-            <p className="text-gray-500">扫描二维码添加WeChat</p>
+            <p className="text-gray-500">{t('maryProjects.scanQR')}</p>
           </div>
         </DialogContent>
       </Dialog>

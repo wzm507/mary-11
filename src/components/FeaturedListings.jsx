@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { useTranslation } from 'react-i18next';
 
 const FeaturedListings = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [isPhoneDialogOpen, setIsPhoneDialogOpen] = useState(false);
   const properties = [
@@ -64,14 +66,14 @@ const FeaturedListings = () => {
     <div className="py-20 px-4 max-w-7xl mx-auto">
       <div className="flex justify-between items-end mb-16">
         <div>
-          <h2 className="text-3xl font-bold mb-2">精选房产</h2>
+          <h2 className="text-3xl font-bold mb-2">{t('featuredListings')}</h2>
           <p className="text-gray-600">Discover Our Featured Listings</p>
         </div>
         <div 
           className="flex items-center text-gray-500 cursor-pointer hover:text-amber-600 transition"
           onClick={goToMaryProjects}
         >
-          <span>查看Mary项目</span>
+          <span>{t('myStory')}</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>
@@ -130,13 +132,13 @@ const FeaturedListings = () => {
                     onClick={handlePhoneButtonClick}
                     className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition"
                   >
-                    立即咨询
+                    {t('contactNow')}
                   </button>
                   <button 
                     onClick={handleDetailsClick}
                     className="bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium transition"
                   >
-                    更多细节
+                    {t('learnMore')}
                   </button>
                 </div>
               </div>
@@ -148,11 +150,11 @@ const FeaturedListings = () => {
       <Dialog open={isPhoneDialogOpen} onOpenChange={setIsPhoneDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="text-center">联系方式</DialogTitle>
+            <DialogTitle className="text-center">{t('phone')}</DialogTitle>
           </DialogHeader>
           <div className="text-center py-6">
             <p className="text-2xl font-bold">971 52 7476335</p>
-            <p className="text-gray-500 mt-2">请保存此号码以便随时联系</p>
+            <p className="text-gray-500 mt-2">{t('contactSection')}</p>
           </div>
         </DialogContent>
       </Dialog>

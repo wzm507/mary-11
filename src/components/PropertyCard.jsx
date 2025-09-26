@@ -1,6 +1,7 @@
 
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -11,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, User } from 'lucide-react';
 
 const PropertyCard = ({ property }) => {
+  const { t } = useTranslation();
   const [isConsultDialogOpen, setIsConsultDialogOpen] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const [date, setDate] = useState();
@@ -48,7 +50,7 @@ const PropertyCard = ({ property }) => {
 
   const handleConfirm = () => {
     console.log('咨询提交:', { date, ...formData });
-    alert('您的咨询已提交，我们会尽快与您联系！');
+    alert(t('propertyCard.submitSuccess'));
     setIsConfirmDialogOpen(false);
     setFormData({
       name: '',
@@ -60,7 +62,7 @@ const PropertyCard = ({ property }) => {
   };
 
   // 检查是否是Mary精选项目9-16
-  const isSoldOut = property.title && property.title.startsWith('Mary精选项目') && 
+  const isSoldOut = property.title && property.title.includes('Mary精选项目') && 
                    parseInt(property.title.split(' ')[1]) >= 9 && 
                    parseInt(property.title.split(' ')[1]) <= 16;
 
@@ -85,7 +87,7 @@ const PropertyCard = ({ property }) => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-                <span className="text-xs">{property.beds} 卧室</span>
+                <span className="text-xs">{property.beds} {t('maryProjects.bedroom')}</span>
               </div>
             </div>
             
@@ -94,7 +96,7 @@ const PropertyCard = ({ property }) => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span className="text-xs">{property.baths} 浴室</span>
+                <span className="text-xs">{property.baths} {t('maryProjects.bathroom')}</span>
               </div>
             </div>
           </div>
@@ -104,33 +106,33 @@ const PropertyCard = ({ property }) => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5" />
               </svg>
-              <span className="text-xs">{property.sqft} 平方英尺</span>
+              <span className="text-xs">{property.sqft} {t('maryProjects.squareFeet')}</span>
             </div>
           </div>
           
           <div className="mt-4 flex justify-center space-x-2">
             {isSoldOut ? (
               <button 
-                className="bg-gray-400 text-white px-4 py-2 rounded-lg font-medium cursor-not-allowed"
-                disabled
-                onClick={(e) => e.stopPropagation()}
-              >
-                已售空
-              </button>
+                    className="bg-gray-400 text-white px-4 py-2 rounded-lg font-medium cursor-not-allowed"
+                    disabled
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {t('maryProjects.soldOut')}
+                  </button>
             ) : (
               <button 
-                onClick={handleConsultClick}
-                className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition"
-              >
-                立即咨询
-              </button>
+                    onClick={handleConsultClick}
+                    className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition"
+                  >
+                    {t('maryProjects.consultNow')}
+                  </button>
             )}
             <button 
-              onClick={handleDetailsClick}
-              className="bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium transition"
-            >
-              房源信息
-            </button>
+                    onClick={handleDetailsClick}
+                    className="bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium transition"
+                  >
+                    {t('maryProjects.propertyInfo')}
+                  </button>
           </div>
         </div>
       </div>
@@ -138,9 +140,9 @@ const PropertyCard = ({ property }) => {
       <Dialog open={isConsultDialogOpen} onOpenChange={setIsConsultDialogOpen}>
         <DialogContent className="sm:max-w-[800px]">
           <DialogHeader>
-            <DialogTitle className="text-center">预约咨询</DialogTitle>
+            <DialogTitle className="text-center">{t('propertyCard.bookConsultation')}</DialogTitle>
             <DialogDescription className="text-center">
-              请填写您的信息并选择预约日期
+              {t('propertyCard.fillInfo')}
             </DialogDescription>
           </DialogHeader>
           
@@ -148,7 +150,7 @@ const PropertyCard = ({ property }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">姓名</Label>
+                  <Label htmlFor="name">{t('propertyCard.name')}</Label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <User className="h-4 w-4 text-gray-400" />
@@ -160,14 +162,14 @@ const PropertyCard = ({ property }) => {
                       value={formData.name}
                       onChange={handleInputChange}
                       className="pl-10"
-                      placeholder="请输入您的姓名"
+                      placeholder={t('propertyCard.enterName')}
                       required
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">电话</Label>
+                  <Label htmlFor="phone">{t('propertyCard.phone')}</Label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <Phone className="h-4 w-4 text-gray-400" />
@@ -179,14 +181,14 @@ const PropertyCard = ({ property }) => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="pl-10"
-                      placeholder="请输入联系电话"
+                      placeholder={t('propertyCard.enterPhone')}
                       required
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email">邮箱</Label>
+                  <Label htmlFor="email">{t('propertyCard.email')}</Label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <Mail className="h-4 w-4 text-gray-400" />
@@ -198,20 +200,20 @@ const PropertyCard = ({ property }) => {
                       value={formData.email}
                       onChange={handleInputChange}
                       className="pl-10"
-                      placeholder="请输入邮箱地址"
+                      placeholder={t('propertyCard.enterEmail')}
                       required
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message">咨询内容</Label>
+                  <Label htmlFor="message">{t('propertyCard.consultationContent')}</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="请输入您的具体咨询内容"
+                    placeholder={t('propertyCard.enterConsultation')}
                     rows={3}
                   />
                 </div>
@@ -219,7 +221,7 @@ const PropertyCard = ({ property }) => {
               
               <div className="flex flex-col">
                 <div className="space-y-2">
-                  <Label>选择预约日期</Label>
+                  <Label>{t('propertyCard.selectDate')}</Label>
                   <Calendar
                     mode="single"
                     selected={date}
@@ -230,7 +232,7 @@ const PropertyCard = ({ property }) => {
                 </div>
                 <div className="mt-auto pt-4">
                   <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-600">
-                    确认提交
+                    {t('propertyCard.submitConfirm')}
                   </Button>
                 </div>
               </div>
@@ -242,24 +244,24 @@ const PropertyCard = ({ property }) => {
       <Dialog open={isConfirmDialogOpen} onOpenChange={setIsConfirmDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="text-center">确认提交</DialogTitle>
-          </DialogHeader>
-          <div className="py-6 text-center">
-            <p className="text-lg mb-6">您确定要提交咨询请求吗？</p>
+              <DialogTitle className="text-center">{t('propertyCard.confirmDialogTitle')}</DialogTitle>
+            </DialogHeader>
+            <div className="py-6 text-center">
+              <p className="text-lg mb-6">{t('propertyCard.confirmMessage')}</p>
             <div className="flex justify-center space-x-4">
               <Button 
-                variant="outline" 
-                onClick={() => setIsConfirmDialogOpen(false)}
-                className="px-6"
-              >
-                取消
-              </Button>
+                  variant="outline" 
+                  onClick={() => setIsConfirmDialogOpen(false)}
+                  className="px-6"
+                >
+                  {t('propertyCard.cancel')}
+                </Button>
               <Button 
-                onClick={handleConfirm}
-                className="bg-amber-500 hover:bg-amber-600 px-6"
-              >
-                确认提交
-              </Button>
+                  onClick={handleConfirm}
+                  className="bg-amber-500 hover:bg-amber-600 px-6"
+                >
+                  {t('propertyCard.submitConfirm')}
+                </Button>
             </div>
           </div>
         </DialogContent>

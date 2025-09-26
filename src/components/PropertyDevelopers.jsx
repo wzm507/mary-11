@@ -1,30 +1,32 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const PropertyDevelopers = () => {
+  const { t } = useTranslation();
   const developers = [
     {
-      developerName: "伊玛尔地产",
+      developerName: t('developerProjects.emaar'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/image-em5m8w27somkqjyilhfgg1qkzykqog.png"
     },
     {
-      developerName: "美拉斯地产",
+      developerName: t('developerProjects.meraas'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/1752221625121-nic16g94zoic38skbcc69pwts6o9vk.jpg"
     },
     {
-      developerName: "达马克地产",
+      developerName: t('developerProjects.damac'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/image-b0u3xu94i0icykmilp0ia5fsw99872.png"
     },
     {
-      developerName: "aldar地产",
+      developerName: t('developerProjects.aldar'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/image-nfew6ly045uazfwf4kluubuuj98ypx.png"
     },
     {
-      developerName: "SOBHA地产",
+      developerName: t('developerProjects.sobha'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/sobha-liytn1ue4ft4vo9mpoyd7qe8qyfcvq.png"
     },
     {
-      developerName: "AZIZI地产",
+      developerName: t('developerProjects.azizi'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/image-egi57oby94qiwhhvzbuah2e25k6504.png"
     }
   ];
@@ -40,14 +42,14 @@ const PropertyDevelopers = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-16">
           <div>
-            <h2 className="text-3xl font-bold mb-2">开发商房产</h2>
-            <p className="text-gray-600">Exclusive Developer Listings</p>
+            <h2 className="text-3xl font-bold mb-2">{t('propertyDevelopers')}</h2>
+            <p className="text-gray-600">{t('developerProjects.propertyDevelopersSubtitle')}</p>
           </div>
           <div 
             className="flex items-center text-gray-500 cursor-pointer hover:text-amber-600 transition"
             onClick={goToDeveloperProjects}
           >
-            <span>官方合作开发商</span>
+            <span>{t('companyProfile')}</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>

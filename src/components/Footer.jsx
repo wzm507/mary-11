@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Mail, Phone, MapPin, MessageSquare, User } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,7 +37,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
-            <h4 className="text-lg font-semibold mb-6">联系我们</h4>
+            <h4 className="text-lg font-semibold mb-6">{t('contactUs')}</h4>
             
             <div className="bg-transparent p-0">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -48,7 +50,7 @@ const Footer = () => {
                     id="name"
                     {...register('name', { required: '请输入您的姓名' })}
                     className="w-full pl-10 pr-4 py-3 bg-transparent border-b border-gray-600 focus:outline-none focus:border-amber-500 text-white placeholder-gray-400"
-                    placeholder="您的姓名"
+                    placeholder={t('yourName')}
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
@@ -70,7 +72,7 @@ const Footer = () => {
                       }
                     })}
                     className="w-full pl-10 pr-4 py-3 bg-transparent border-b border-gray-600 focus:outline-none focus:border-amber-500 text-white placeholder-gray-400"
-                    placeholder="您的邮箱"
+                    placeholder={t('yourEmail')}
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
@@ -86,7 +88,7 @@ const Footer = () => {
                     id="phone"
                     {...register('phone')}
                     className="w-full pl-10 pr-4 py-3 bg-transparent border-b border-gray-600 focus:outline-none focus:border-amber-500 text-white placeholder-gray-400"
-                    placeholder="您的电话 (可选)"
+                    placeholder={t('yourPhone')}
                   />
                 </div>
 
@@ -99,7 +101,7 @@ const Footer = () => {
                     rows={4}
                     {...register('message')}
                     className="w-full pl-10 pr-4 py-3 bg-transparent border-b border-gray-600 focus:outline-none focus:border-amber-500 text-white placeholder-gray-400"
-                    placeholder="您的留言 (可选)"
+                    placeholder={t('yourMessage')}
                   />
                 </div>
                 
@@ -112,7 +114,7 @@ const Footer = () => {
                     <span>发送中...</span>
                   ) : (
                     <>
-                      <span>提交信息</span>
+                      <span>{t('submitInfo')}</span>
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
@@ -124,7 +126,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6">联系方式</h4>
+            <h4 className="text-lg font-semibold mb-6">{t('contactInfo')}</h4>
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 flex-shrink-0" />
@@ -150,23 +152,23 @@ const Footer = () => {
                 className="w-24 h-24 object-cover rounded-lg"
               />
               <img 
-                src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/%E7%94%BB%E6%9D%BF%209-g08mcpayb5nfd6fgjoqgmw6ib6b95j.png" 
-                alt="WhatsApp二维码" 
+                src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/image-dvr7kt5n9mvaw4v301bkpu5bn310d6.png" 
+                alt="微信二维码" 
                 className="w-24 h-24 object-cover rounded-lg"
               />
             </div>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-6">工作地址</h4>
+            <h4 className="text-lg font-semibold mb-6">{t('workAddress')}</h4>
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5" />
-                <span>迪拜市中心商务区<br/>迪拜塔商务中心15层</span>
+                <span>{t('dubaiBusinessDistrict')}<br/>{t('burjKhalifaBusinessCenter')}</span>
               </li>
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5" />
-                <span>广东省广州市番禺区<br/>基盛中心大厦A座28层</span>
+                <span>{t('guangzhouAddress')}<br/>{t('jishengCenterBuilding')}</span>
               </li>
             </ul>
           </div>
@@ -174,11 +176,11 @@ const Footer = () => {
         
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex space-x-6 mb-4 md:mb-0">
-            <a href="#" className="text-gray-400 hover:text-white transition">隐私政策</a>
-            <a href="#" className="text-gray-400 hover:text-white transition">使用条款</a>
-            <a href="#" className="text-gray-400 hover:text-white transition">网站地图</a>
-          </div>
-          <p className="text-gray-400">© 2024 保留所有权利</p>
+              <a href="#" className="text-gray-400 hover:text-white transition">{t('privacyPolicy')}</a>
+              <a href="#" className="text-gray-400 hover:text-white transition">{t('termsOfService')}</a>
+              <a href="#" className="text-gray-400 hover:text-white transition">{t('siteMap')}</a>
+            </div>
+            <p className="text-gray-400">{t('allRightsReserved')}</p>
         </div>
       </div>
     </footer>

@@ -2,11 +2,13 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 const PropertyDetail = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [isPhoneDialogOpen, setIsPhoneDialogOpen] = React.useState(false);
+  const { t } = useTranslation();
 
   if (!state) {
     navigate('/');
@@ -21,25 +23,25 @@ const PropertyDetail = () => {
     if (state.title === "Distress deal") {
       return (
         <div className="text-gray-700 leading-relaxed space-y-4">
-          <h4 className="font-medium text-gray-900 mb-2">超值好价｜更大地块｜6 卧室别墅｜园景景观｜Nad Al Sheba Gardens 社区</h4>
-          <h4 className="font-medium text-gray-900 mb-2">物业详情</h4>
-          <p>位置：Nad Al Sheba Gardens Phase 6</p>
-          <p>物业状态：期房（Off Plan）</p>
-          <p>交付时间：2027 年 9 月</p>
+          <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.projectDescription')}｜更大地块｜6 {t('propertyDetail.bedrooms')} {t('propertyDetail.unitVilla')}｜{t('propertyDetail.viewGarden')}｜Nad Al Sheba Gardens 社区</h4>
+          <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.propertyDetails')}</h4>
+          <p>{t('propertyDetail.location')}：Nad Al Sheba Gardens Phase 6</p>
+          <p>{t('propertyDetail.propertyStatus')}：{t('propertyDetail.statusOffPlan')}</p>
+          <p>{t('propertyDetail.deliveryDate')}：2027 年 9 月</p>
 
-          <h4 className="font-medium text-gray-900 mt-6 mb-2">户型规划</h4>
-          <p>6 间卧室 + 1 间佣人房</p>
-          <p>楼层结构：G + 2（地面层 + 2 层）</p>
-          <p>建筑面积（BUA）：6,597.19 平方英尺</p>
-          <p>地块面积：7,506.42 平方英尺</p>
-          <p>景观：园景（Garden View）</p>
-          <p>停车位：未提及（通常同类型物业会配套相应车位，具体可咨询开发商）</p>
+          <h4 className="font-medium text-gray-900 mt-6 mb-2">{t('propertyDetail.floorPlan')}</h4>
+          <p>{t('propertyDetail.unitConfiguration')}：6 间{t('propertyDetail.bedrooms')} + 1 间佣人房</p>
+          <p>{t('propertyDetail.floorStructure')}：{t('propertyDetail.floorGPlus2')}</p>
+          <p>{t('propertyDetail.constructionArea')} {t('propertyDetail.bua')}：6,597.19 {t('propertyDetail.squareFeet')}</p>
+          <p>{t('propertyDetail.plotArea')}：7,506.42 {t('propertyDetail.squareFeet')}</p>
+          <p>{t('propertyDetail.view')}：{t('propertyDetail.viewGarden')}</p>
+          <p>{t('propertyDetail.parking')}：{t('propertyDetail.undefinedParking')}</p>
 
-          <h4 className="font-medium text-gray-900 mt-6 mb-2">价格信息</h4>
-          <p>158 万迪拉姆（AED）｜约 4292860 美元（USD）</p>
+          <h4 className="font-medium text-gray-900 mt-6 mb-2">{t('propertyDetail.price')}</h4>
+          <p>{t('propertyDetail.price1580000')}</p>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-6">项目实景照片</h3>
+            <h3 className="text-xl font-bold mb-6">{t('propertyDetail.projectPhotos')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <img 
                 src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/image-u39kt9ce3mgzijohyaqf8wqvzwllz1.png" 
@@ -86,40 +88,40 @@ const PropertyDetail = () => {
           <p className="font-semibold text-lg">超豪华别墅｜定制豪宅｜全屋精装｜高端装修｜优雅精品家具｜封闭式社区</p>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">位置：迪拜山庄（Dubai Hills Estate）</h4>
-            <p className="mb-2">周边交通：</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.location')}：迪拜山庄（Dubai Hills Estate）</h4>
+            <p className="mb-2">{t('propertyDetail.transportation')}：</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>16 分钟至帆船酒店（Burj Al Arab）</li>
-              <li>17 分钟至哈利法塔、迪拜购物中心及市中心</li>
-              <li>19 分钟至朱美拉棕榈岛</li>
-              <li>22 分钟至 JBR 步行街（The Walk JBR）</li>
-              <li>22 分钟至迪拜国际机场（DXB）</li>
+              <li>{t('propertyDetail.transportBurjAlArab16')}</li>
+              <li>{t('propertyDetail.transportBurjKhalifa17')}</li>
+              <li>{t('propertyDetail.transportPalmJumeirah19')}</li>
+              <li>{t('propertyDetail.transportJBR22')}</li>
+              <li>{t('propertyDetail.transportDXB22')}</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">户型配置：</h4>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.floorPlan')}：</h4>
             <ul className="list-disc pl-5 space-y-1">
-              <li>12 间卧室 + 地下室 + 电影院 + 健身房 + 儿童游戏室 + 女佣房 + 司机房</li>
-              <li>10 间浴室</li>
-              <li>占地面积：32,308.9 平方英尺 / 3,001.59 平方米</li>
-              <li>建筑面积：40,000 平方英尺 / 3,716.12 平方米</li>
-              <li>停车位：10 个</li>
+              <li>{t('propertyDetail.floor12Bedrooms')}</li>
+              <li>{t('propertyDetail.floor10Bathrooms')}</li>
+              <li>{t('propertyDetail.plotArea32308')}</li>
+              <li>{t('propertyDetail.constArea40000')}</li>
+              <li>{t('propertyDetail.parking10')}</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">设施与服务：</h4>
-            <p>大堂、正式接待区、茶室、主席办公室、冷热备餐厨房、家庭影院、台球室、健身房、桑拿房、儿童游乐区、游泳池</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.facilities')}：</h4>
+            <p>{t('propertyDetail.facilityLobby')}、{t('propertyDetail.facilityFormalReception')}、{t('propertyDetail.facilityTeaRoom')}、{t('propertyDetail.facilityChairmanOffice')}、{t('propertyDetail.facilityHotKitchen')}、{t('propertyDetail.facilityHomeTheater')}、{t('propertyDetail.facilityBilliardRoom')}、{t('propertyDetail.facilityGym')}、{t('propertyDetail.facilitySauna')}、{t('propertyDetail.facilityKidsPlayArea')}、{t('propertyDetail.facilitySwimmingPool')}</p>
           </div>
 
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">价格：</h4>
-            <p>1.6 亿迪拉姆（AED）｜约 43,561,121.60 美元（USD）</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.price')}：</h4>
+            <p>{t('propertyDetail.price160000000')}</p>
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-6">项目实景照片</h3>
+            <h3 className="text-xl font-bold mb-6">{t('propertyDetail.projectPhotos')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <img 
                 src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707141414-6l8g7rsedxwio6w9hq7bum58hxrpc0.png" 
@@ -193,41 +195,41 @@ const PropertyDetail = () => {
     } else if (state.title === "JumeirahLakeTowers") {
       return (
         <div className="text-gray-700 leading-relaxed space-y-4">
-          <p className="font-semibold text-lg">超豪华顶层公寓｜帆船酒店、迪拜天际线及高尔夫球场景观｜全屋精装配高端全新家具</p>
+          <p className="font-semibold text-lg">{t('propertyDetail.jumeirahLakeTowersDescription')}</p>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">位置：朱美拉湖塔（Jumeirah Lake Towers）</h4>
-            <p className="mb-2">周边交通：</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.location')}：朱美拉湖塔（Jumeirah Lake Towers）</h4>
+            <p className="mb-2">{t('propertyDetail.transportation')}：</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>11 分钟至朱美拉棕榈岛</li>
-              <li>15 分钟至帆船酒店（Burj Al Arab）</li>
-              <li>25 分钟至哈利法塔、迪拜购物中心及市中心</li>
+              <li>{t('propertyDetail.transportPalmJumeirah11')}</li>
+              <li>{t('propertyDetail.transportBurjAlArab15')}</li>
+              <li>{t('propertyDetail.transportBurjKhalifa25')}</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">户型配置：</h4>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.floorPlan')}：</h4>
             <ul className="list-disc pl-5 space-y-1">
-              <li>5 间卧室 + 女佣房 + 储藏室</li>
-              <li>7 间浴室</li>
-              <li>面积：11,432.35 平方英尺 / 1,062.10 平方米</li>
-              <li>景观：高尔夫球场、帆船酒店及迪拜天际线全景</li>
-              <li>停车位：5 个</li>
+              <li>{t('propertyDetail.unitConfiguration')}：5 间{t('propertyDetail.bedrooms')} + 女佣房 + 储藏室</li>
+              <li>{t('propertyDetail.floor7Bathrooms')}</li>
+              <li>{t('propertyDetail.area')}：11,432.35 {t('propertyDetail.sqFt')} / 1,062.10 {t('propertyDetail.sqM')}</li>
+              <li>{t('propertyDetail.viewGolfBurjSkyline')}</li>
+              <li>{t('propertyDetail.parking')}：5 个</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">设施与服务：</h4>
-            <p>会所、悦榕庄水疗中心、全设备健身房、壁球室、31 米游泳池、池畔咖啡馆、儿童泳池、儿童游乐区、私人封闭式社区、宽阔草坪、悦榕庄专属管家服务</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.facilities')}：</h4>
+            <p>{t('propertyDetail.facilityClubhouse')}、{t('propertyDetail.facilitySpa')}、{t('propertyDetail.facilityGym')}、{t('propertyDetail.facilitySquash31mPool')}、{t('propertyDetail.facilityKidsPool')}、{t('propertyDetail.facilityKidsPlayArea')}、{t('propertyDetail.facilityPrivateGatedCommunity')}、{t('propertyDetail.facilityWideLawn')}、{t('propertyDetail.facilityBanyanTreeButlerService')}</p>
           </div>
 
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">价格：</h4>
-            <p>4,000 万迪拉姆（AED）｜约 10,890,652 美元（USD）</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.price')}：</h4>
+            <p>{t('propertyDetail.price40000000')}</p>
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-6">项目实景照片</h3>
+            <h3 className="text-xl font-bold mb-6">{t('propertyDetail.projectPhotos')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <img 
                 src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707142002-pn0idm8et2m26kt4oaurk2tzm0fo10.png" 
@@ -286,44 +288,44 @@ const PropertyDetail = () => {
     } else if (state.title === "BluewatersIsland") {
       return (
         <div className="text-gray-700 leading-relaxed space-y-4">
-          <p className="font-semibold text-lg">蓝水岛｜豪华公寓｜全屋精装｜部分海景</p>
+          <p className="font-semibold text-lg">{t('propertyDetail.bluewatersIslandDescription')}</p>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">物业详情：</h4>
-            <h4 className="font-medium text-gray-900 mb-2">位置：蓝水岛（Bluewaters Island）</h4>
-            <p className="mb-2">周边交通：</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.propertyDetails')}：</h4>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.location')}：蓝水岛（Bluewaters Island）</h4>
+            <p className="mb-2">{t('propertyDetail.transportation')}：</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>{t('propertyDetail.transportWalkMin')}7{t('propertyDetail.transportTimeMin')}{t('propertyDetail.dubaiEye')}</li>
+            <li>10{t('propertyDetail.transportTimeMin')}JBR{t('propertyDetail.beach')}</li>
+            <li>{t('propertyDetail.transportPalmJumeirah11')}</li>
+            <li>17{t('propertyDetail.transportTimeMin')}{t('propertyDetail.burjAlArab')}</li>
+          </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.floorPlan')}：</h4>
             <ul className="list-disc pl-5 space-y-1">
-              <li>步行 7 分钟至迪拜之眼（Dubai Eye）</li>
-              <li>10 分钟至 JBR 海滩</li>
-              <li>11 分钟至朱美拉棕榈岛</li>
-              <li>17 分钟至帆船酒店（Burj Al Arab）</li>
+              <li>{t('propertyDetail.floor1Bedroom')}</li>
+              <li>{t('propertyDetail.floor1Bath1Powder')}</li>
+              <li>{t('propertyDetail.area1118')}</li>
+              <li>{t('propertyDetail.viewPartialSea')}</li>
+              <li>{t('propertyDetail.parking1')}</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">户型配置：</h4>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>1 间卧室</li>
-              <li>1 间浴室 + 1 间客用洗手间</li>
-              <li>面积：1,118.59 平方英尺 / 103.92 平方米</li>
-              <li>景观：部分海景及社区景观</li>
-              <li>停车位：1 个</li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-medium text-gray-900 mb-2">设施与服务：</h4>
-            <p>游泳池、设备齐全的健身房、儿童游乐区、景观花园、篮球场、餐厅、电动交通及水上的士服务</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.facilities')}：</h4>
+            <p>{t('propertyDetail.facilityBluewater')}</p>
           </div>
 
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">价格：</h4>
-            <p>550 万迪拉姆（AED）｜约 1,497,617 美元（USD）</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.price')}：</h4>
+            <p>{t('propertyDetail.price5500000')}</p>
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-6">项目实景照片</h3>
-            <div className="grid grid-cols-1 md:grid-cs-2 lg:grid-cols-3 gap-6">
+            <h3 className="text-xl font-bold mb-6">{t('propertyDetail.projectPhotos')}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <img 
                 src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707142242-h55f5fk6offr5ngb21o4ummave3orv.png" 
                 alt="BluewatersIsland 实景照片" 
@@ -366,47 +368,47 @@ const PropertyDetail = () => {
     } else if (state.title === "Damac Lagoons") {
       return (
         <div className="text-gray-700 leading-relaxed space-y-4">
-          <p className="font-semibold text-lg">独栋别墅｜经典建筑风格｜单排布局｜公园景观｜毗邻泻湖</p>
+          <p className="font-semibold text-lg">{t('propertyDetail.damacLagoonsDescription')}</p>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">位置：达马克泻湖（Damac Lagoons）</h4>
-            <p className="mb-2">周边交通：</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.location')}：达马克泻湖（Damac Lagoons）</h4>
+            <p className="mb-2">{t('propertyDetail.transportation')}：</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>13 分钟至奇迹花园（Miracle Garden）</li>
-              <li>14 分钟至全球村（Global Village）</li>
-              <li>26 分钟至朱美拉棕榈岛</li>
-              <li>28 分钟至帆船酒店（Burj Al Arab）</li>
-              <li>30 分钟至 JBR 步行街（The Walk JBR）</li>
-              <li>32 分钟至哈利法塔、迪拜购物中心及市中心</li>
-              <li>24 分钟至阿勒马克图姆国际机场（Al Maktoum International Airport）</li>
-              <li>37 分钟至迪拜国际机场（DXB）</li>
+              <li>{t('propertyDetail.transportMiracleGarden13')}</li>
+              <li>{t('propertyDetail.transportGlobalVillage14')}</li>
+              <li>{t('propertyDetail.transportPalmJumeirah26')}</li>
+              <li>{t('propertyDetail.transportBurjAlArab28')}</li>
+              <li>{t('propertyDetail.transportJBR30')}</li>
+              <li>{t('propertyDetail.transportBurjKhalifa32')}</li>
+              <li>{t('propertyDetail.transportDWC24')}</li>
+              <li>{t('propertyDetail.transportDXB37')}</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">户型配置：</h4>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.floorPlan')}：</h4>
             <ul className="list-disc pl-5 space-y-1">
-              <li>6 间卧室 + 女佣房</li>
-              <li>7 间浴室</li>
-              <li>占地面积：5,087.35 平方英尺 / 472.63 平方米</li>
-              <li>建筑面积：4,784.88 平方英尺 / 444.52 平方米</li>
-              <li>停车位：4 个</li>
-              <li>景观：公园景观、部分泻湖景观</li>
+              <li>{t('propertyDetail.floor6BedMaid')}</li>
+              <li>{t('propertyDetail.floor7Bathrooms')}</li>
+              <li>{t('propertyDetail.plotArea5087')}</li>
+              <li>{t('propertyDetail.constArea4784')}</li>
+              <li>{t('propertyDetail.parking4')}</li>
+              <li>{t('propertyDetail.viewParkPartialLagoon')}</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">设施与服务：</h4>
-            <p>水晶泻湖、天然山景瀑布、漂浮电影院、海滩入口、滑板公园、自行车道、嬉水池、泻湖滑索、滨水餐厅、专属会所、儿童游乐区、篮球场</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.facilities')}：</h4>
+            <p>{t('propertyDetail.facilityLagoons')}、{t('propertyDetail.facilityDamacLagoons')}</p>
           </div>
 
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">价格：</h4>
-            <p>680 万迪拉姆（AED）｜约 1,851,403.36 美元（USD）</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.price')}：</h4>
+            <p>{t('propertyDetail.price6800000')}</p>
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-6">项目实景照片</h3>
+            <h3 className="text-xl font-bold mb-6">{t('propertyDetail.projectPhotos')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <img 
                 src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707140936-jrhsyuabig7scqhvs50gfvth8462u4.png" 
@@ -450,45 +452,45 @@ const PropertyDetail = () => {
     } else if (state.title === "Business Bay") {
       return (
         <div className="text-gray-700 leading-relaxed space-y-4">
-          <p className="font-semibold text-lg">超值好价｜全屋精装｜2 卧室公寓｜全运河景观｜地处迪拜核心地段</p>
+          <p className="font-semibold text-lg">{t('propertyDetail.projectDescription')}｜全屋精装｜2 {t('propertyDetail.bedrooms')} {t('propertyDetail.unitApartment')}｜全{t('propertyDetail.viewCanal')}｜地处迪拜核心地段</p>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">物业详情</h4>
-            <h4 className="font-medium text-gray-900 mb-2">位置：商务港（Business Bay）</h4>
-            <p className="mb-2">交通配套：</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.propertyDetails')}</h4>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.location')}：商务港（Business Bay）</h4>
+            <p className="mb-2">{t('propertyDetail.transportation')}：</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>7{t('propertyDetail.transportTimeMin')}{t('propertyDetail.burjKhalifa')}、{t('propertyDetail.dubaiMall')}{t('propertyDetail.andDowntown')}</li>
+            <li>10{t('propertyDetail.transportTimeMin')}{t('propertyDetail.beach')}</li>
+            <li>15{t('propertyDetail.transportTimeMin')}{t('propertyDetail.dxbAirport')}</li>
+          </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.floorPlan')}：</h4>
             <ul className="list-disc pl-5 space-y-1">
-              <li>7 分钟直达哈利法塔、迪拜购物中心及迪拜市中心</li>
-              <li>10 分钟抵达海滩</li>
-              <li>15 分钟直达迪拜国际机场（DXB）</li>
+              <li>{t('propertyDetail.unitConfiguration')}：2 间{t('propertyDetail.bedrooms')}</li>
+            <li>2{t('propertyDetail.bathrooms')} + 1{t('propertyDetail.powderRoom')}</li>
+            <li>{t('propertyDetail.area')}：1,330.74 {t('propertyDetail.sqFt')} / 123.63 {t('propertyDetail.sqM')}</li>
+            <li>{t('propertyDetail.view')}：{t('propertyDetail.viewCanal')}</li>
+            <li>{t('propertyDetail.parking')}：1{t('propertyDetail.parkingSpace')}</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">户型规划：</h4>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>2 间卧室</li>
-              <li>2 间浴室 + 1 间客用洗手间</li>
-              <li>面积：1,330.74 平方英尺 / 123.63 平方米</li>
-              <li>景观：全运河景观</li>
-              <li>停车位：1 个</li>
-            </ul>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.facilities')}</h4>
+            <p>{t('propertyDetail.leisureSports')}：{t('propertyDetail.facilityPool')}、{t('propertyDetail.facilityGym')}、{t('propertyDetail.facilityTennis')}、{t('propertyDetail.joggingTrack')}、{t('propertyDetail.cyclingTrack')}</p>
+            <p>{t('propertyDetail.lifestyleAmenities')}：{t('propertyDetail.facilityCafe')}、{t('propertyDetail.facilityRestaurant')}、{t('propertyDetail.facilitySupermarket')}、{t('propertyDetail.facilityHotel')}、{t('propertyDetail.facilityEVCharging')}</p>
+            <p>{t('propertyDetail.familyEntertainment')}：{t('propertyDetail.facilityKidsPlayArea')}</p>
+            <p>{t('propertyDetail.relaxationSpace')}：{t('propertyDetail.facilityRooftopTerrace')}、{t('propertyDetail.facilityIndoorLounge')}、{t('propertyDetail.facilityOutdoorLounge')}、{t('propertyDetail.facilitySpa')}、{t('propertyDetail.facilitySauna')}</p>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">设施与服务</h4>
-            <p>休闲运动：游泳池、设备齐全的健身房、板式网球场、慢跑及自行车道</p>
-            <p>生活配套：咖啡馆与餐厅、超市、酒店、电动车充电站</p>
-            <p>亲子娱乐：儿童游乐区</p>
-            <p>放松空间：屋顶露台、室内外休闲区、水疗中心与桑拿房</p>
-          </div>
-          
-          <div>
-            <h4 className="font-medium text-gray-900 mb-2">价格信息</h4>
-            <p>245 万迪拉姆（AED）｜约 667,053.17 美元（USD）</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.price')}</h4>
+            <p>{t('propertyDetail.price2450000')}</p>
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-6">项目实景照片</h3>
+            <h3 className="text-xl font-bold mb-6">{t('propertyDetail.projectPhotos')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <img 
                 src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707142434-kmhi3hzg6q85q8pllsylva70fayesj.png" 
@@ -532,42 +534,42 @@ const PropertyDetail = () => {
     } else {
       return (
         <div className="text-gray-700 leading-relaxed space-y-4">
-          <p className="font-semibold text-lg">【超值投资良机｜黄金地段｜服务式酒店公寓｜全屋精装｜都市风格】</p>
+          <p className="font-semibold text-lg">{t('propertyDetail.cityWalkDescription')}</p>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">位置：City Walk（城市漫步区）</h4>
-            <p className="mb-2">周边配套：</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.location')}：City Walk（城市漫步区）</h4>
+            <p className="mb-2">{t('propertyDetail.transportation')}：</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>{t('propertyDetail.transportCocaColaArena')}</li>
+            <li>7{t('propertyDetail.transportTimeMin')}{t('propertyDetail.burjKhalifa')}、{t('propertyDetail.dubaiMall')}{t('propertyDetail.andDowntown')}</li>
+            <li>{t('propertyDetail.transportLaMer12')}</li>
+            <li>15{t('propertyDetail.transportTimeMin')}{t('propertyDetail.dxbAirport')}</li>
+            <li>25{t('propertyDetail.transportTimeMin')}{t('propertyDetail.palmJumeirah')}</li>
+          </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.floorPlan')}：</h4>
             <ul className="list-disc pl-5 space-y-1">
-              <li>2 分钟至可口可乐竞技场</li>
-              <li>7 分钟至哈利法塔、迪拜购物中心及市中心</li>
-              <li>12 分钟至拉梅尔海滩</li>
-              <li>15 分钟至迪拜国际机场（DXB）</li>
-              <li>25 分钟至朱美拉棕榈岛</li>
+              <li>{t('propertyDetail.floorStudio')}</li>
+            <li>1{t('propertyDetail.bathroom')}</li>
+            <li>{t('propertyDetail.area253')}</li>
+            <li>{t('propertyDetail.viewCommunityCity')}</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">户型配置：</h4>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>开间（Studio）</li>
-              <li>1 间浴室</li>
-              <li>面积：253.71 平方英尺 / 23.57 平方米</li>
-              <li>景观：社区 / 城市景观</li>
-            </ul>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.facilities')}：</h4>
+            <p>{t('propertyDetail.facilityCityWalk')}</p>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">设施与服务：</h4>
-            <p>游泳池｜健身房｜户外烧烤区｜儿童游乐区｜花园 / 草坪｜餐厅｜洗衣区</p>
-          </div>
-          
-          <div>
-            <h4 className="font-medium text-gray-900 mb-2">价格：</h4>
-            <p>80 万迪拉姆（AED）｜约 217,813.28 美元（USD）</p>
+            <h4 className="font-medium text-gray-900 mb-2">{t('propertyDetail.price')}：</h4>
+            <p>{t('propertyDetail.price800000')}</p>
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-6">项目实景照片</h3>
+            <h3 className="text-xl font-bold mb-6">{t('propertyDetail.projectPhotos')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <img 
                 src="https://s3plus.sankuai.com/nocode-external/nocode_image/default/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707142809-wsbpt9ayxbzno3soomk5hgqxv0chda.png" 
@@ -634,42 +636,42 @@ const PropertyDetail = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-amber-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <p className="text-gray-500 text-sm">卧室</p>
+              <p className="text-gray-500 text-sm">{t('propertyDetail.bedrooms')}</p>
               <p className="text-lg font-semibold">{state.beds}</p>
             </div>
             <div className="bg-gray-50 p-4 rounded-lg flex flex-col items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-amber-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <p className="text-gray-500 text-sm">浴室</p>
+              <p className="text-gray-500 text-sm">{t('propertyDetail.bathrooms')}</p>
               <p className="text-lg font-semibold">{state.baths}</p>
             </div>
             <div className="bg-gray-50 p-4 rounded-lg flex flex-col items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-amber-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5" />
               </svg>
-              <p className="text-gray-500 text-sm">面积</p>
-              <p className="text-lg font-semibold">{state.sqft.toLocaleString()} SqFt</p>
+              <p className="text-gray-500 text-sm">{t('propertyDetail.area')}</p>
+              <p className="text-lg font-semibold">{state.sqft.toLocaleString()} {t('propertyDetail.squareFeet')}</p>
             </div>
             <div className="bg-gray-50 p-4 rounded-lg flex flex-col items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-amber-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <p className="text-gray-500 text-sm">位置</p>
-              <p className="text-lg font-semibold">迪拜</p>
+              <p className="text-gray-500 text-sm">{t('propertyDetail.location')}</p>
+              <p className="text-lg font-semibold">{t('propertyDetail.dubai')}</p>
             </div>
           </div>
           
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
-            <h3 className="text-xl font-bold mb-4">物业详情</h3>
+            <h3 className="text-xl font-bold mb-4">{t('propertyDetail.propertyDetails')}</h3>
             {renderPropertyDetails()}
           </div>
         </div>
         
         <div className="lg:w-1/3">
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 sticky top-6">
-            <h3 className="text-xl font-bold mb-4">咨询详情</h3>
+            <h3 className="text-xl font-bold mb-4">{t('propertyDetail.consultation')}</h3>
             <div className="space-y-4">
               <div className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -682,14 +684,14 @@ const PropertyDetail = () => {
                 onClick={handlePhoneButtonClick}
                 className="w-full bg-amber-500 hover:bg-amber-600 text-white py-3"
               >
-                立即咨询
+                {t('propertyDetail.consultNow')}
               </Button>
               
               <Button 
                 variant="outline" 
                 className="w-full border-amber-500 text-amber-500 hover:bg-amber-50 py-3"
               >
-                预约看房
+                {t('propertyDetail.bookViewing')}
               </Button>
             </div>
           </div>
@@ -699,11 +701,11 @@ const PropertyDetail = () => {
       <Dialog open={isPhoneDialogOpen} onOpenChange={setIsPhoneDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="text-center">联系方式</DialogTitle>
+            <DialogTitle className="text-center">{t('propertyDetail.contactInfo')}</DialogTitle>
           </DialogHeader>
           <div className="text-center py-6">
             <p className="text-2xl font-bold">971 52 7476335</p>
-            <p className="text-gray-500 mt-2">请保存此号码以便随时联系</p>
+            <p className="text-gray-500 mt-2">{t('propertyDetail.saveNumber')}</p>
           </div>
         </DialogContent>
       </Dialog>

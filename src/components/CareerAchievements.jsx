@@ -1,14 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const CareerAchievements = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   
   const achievements = [
     {
       id: 'dubai-advisor',
-      title: "深耕迪拜七年",
-      description: "政府开发商中国市场顾问",
+      title: t('careerAchievements.dubaiAdvisor.title'),
+      description: t('careerAchievements.dubaiAdvisor.description'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/WechatIMG586-4aw4a23eiqp90uxf6t1j2c9rafaa2k.jpg",
       content: `## 1.从基层起步，在多元环境中扎根
 以 2500 迪拉姆起薪进入迪拜，从房地产销售基层开启职业生涯，在包含外企职场、俄罗斯经理管理、巴基斯坦公司背景的复杂环境中，逐步熟悉当地市场规则与跨文化协作模式。
@@ -29,8 +31,8 @@ const CareerAchievements = () => {
     },
     {
       id: 'fashion-brand',
-      title: "时尚产业",
-      description: "创立女装品牌 YCL.STYLES",
+      title: t('careerAchievements.fashionBrand.title'),
+      description: t('careerAchievements.fashionBrand.description'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/1750904938741-y0hm2ba0fiu77jsxmybl6ha79vzw5k.jpg",
       content: `YCL.STYLES 品牌介绍
 
@@ -55,8 +57,8 @@ const CareerAchievements = () => {
     },
     {
       id: 'advertising',
-      title: "广告咨询",
-      description: "2023 年成立北京广告咨询公司",
+      title: t('careerAchievements.advertising.title'),
+      description: t('careerAchievements.advertising.description'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/1750905073392-bew0v4kk9v7qf16iyg34wcj18fk0jz.jpg",
       content: `## KLF STUDIO 广告咨询服务
 
@@ -102,8 +104,8 @@ KLF是一家专注中东地产领域的数字营销与科技服务公司，致�
     },
     {
       id: 'restaurant',
-      title: "餐饮投资",
-      description: "迪拜高端中餐馆 \"唐镇\" 合伙人",
+      title: t('careerAchievements.restaurant.title'),
+      description: t('careerAchievements.restaurant.description'),
       image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/1750904915923-hthhr10g2f6ev260yw0pp7tsrx8wrw.jpg",
       content: `1.这是位于阿联酋迪拜唐人街好运集市的米其林小吃项目，场地面积达 9586.75 平方英尺，项目于 2025 年 1 月开展，由 VIEW ARCHITECTS 和 TANG INVESTMENT 组成的设计团队倾力打造。
 2.项目不仅是一处地标，更是融合文化与情感的精神港湾，既展现华人文化特色，也是城市文化共融的象征，不同语言、文化与风俗在此和谐共生。
@@ -113,12 +115,12 @@ KLF是一家专注中东地产领域的数字营销与科技服务公司，致�
 6.设有开水供应、公共电话等实用设施，以及适合拍照打卡的区域，搭配 "抬头见喜" 等传统元素和亲切的服务标语，营造出兼具传统韵味与现代体验的氛围。
 7.项目致力于打造多元文化体验空间，通过特色美食、文化元素和贴心服务，让您在此感受独特的唐人街魅力，找到属于自己的宁静与美好。`
     },
-    {
-      id: 'cultural-bridge',
-      title: "国际传播角色",
-      description: "\"中东市场观察者\" 与 \"文化桥梁\" 双重身份",
-      image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/1750904921876-4cmu4m8kqnky7sys7164bdfd5ows88.jpg",
-      content: `## 1.中东市场观察者：以专业视角输出深度洞察
+      {
+        id: 'cultural-bridge',
+        title: t('careerAchievements.culturalBridge.title'),
+        description: t('careerAchievements.culturalBridge.description'),
+        image: "https://s3plus.sankuai.com/nocode-external/nocode_image/default/1750904921876-4cmu4m8kqnky7sys7164bdfd5ows88.jpg",
+        content: `## 1.中东市场观察者：以专业视角输出深度洞察
 依托近十年迪拜深耕经验，聚焦房地产、商业运营等核心领域，通过外籍平台（Instagram、YouTube）以海外网红视角，系统输出迪拜市场动态、投资逻辑与生活方式解析。
 内容兼具实战性与专业性，例如结合自身房地产投资与咨询经历，解读中东房产政策、市场趋势及资产配置策略，为关注中东市场的全球受众提供参考。
 
@@ -127,7 +129,7 @@ KLF是一家专注中东地产领域的数字营销与科技服务公司，致�
 借助跨界实践（如主持阿拉伯国际节颁奖礼、与中外明星互动等），以更具亲和力的方式打破文化隔阂，在国际传播中融入人文温度，成为中阿民间交流的纽带。
 
 ## 3.双重身份的协同与价值
-"中东市场观察者" 的专业属性为传播内容奠定可信度，其在福布斯发表的学术性论文、实战化商业经验，让市场解读更具说服力；"文化桥梁" 的角色则赋予传播人文深度，通过生活方式分享、跨文化活动参与，让国际受众更立体地理解中东与中国的关联。
+中东市场观察者的专业属性为传播内容奠定可信度，其在福布斯发表的学术性论文、实战化商业经验，让市场解读更具说服力；文化桥梁的角色则赋予传播人文深度，通过生活方式分享、跨文化活动参与，让国际受众更立体地理解中东与中国的关联。
 两者相互赋能，既以专业洞察服务全球投资者与创业者，又以文化连接促进中阿民间互信，最终实现商业信息与人文价值的双重输出。`
     }
   ];
@@ -141,8 +143,8 @@ KLF是一家专注中东地产领域的数字营销与科技服务公司，致�
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-16">
           <div>
-            <h2 className="text-3xl font-bold mb-2">职业成就与商业布局</h2>
-            <p className="text-gray-600">Career Achievements and Business Layout</p>
+            <h2 className="text-3xl font-bold mb-2">{t('careerAchievements.title')}</h2>
+          <p className="text-gray-600">{t('careerAchievements.subtitle')}</p>
           </div>
         </div>
 
