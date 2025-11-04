@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ScrollAnimation from './ScrollAnimation';
 
 const CareerAchievements = () => {
   const navigate = useNavigate();
@@ -150,22 +151,31 @@ KLF是一家专注中东地产领域的数字营销与科技服务公司，致�
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {achievements.map((item, index) => (
-            <div 
-              key={index} 
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col items-center group cursor-pointer"
-              onClick={() => handleCardClick(item.id)}
+            <ScrollAnimation 
+              key={item.id} 
+              type="fade-up" 
+              duration={700} 
+              delay={index * 100} 
+              offset={80}
             >
-              <div className="w-20 h-20 rounded-full overflow-hidden mb-4 flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-full z-10"></div>
+              <div 
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col items-center group cursor-pointer relative overflow-hidden"
+                onClick={() => handleCardClick(item.id)}
+              >
+              <div className="w-20 h-20 rounded-full overflow-hidden mb-4 flex items-center justify-center relative z-0 transition-all duration-700 group-hover:scale-[10] group-hover:rounded-none">
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-700 z-10"></div>
                 <img 
                   src={item.image} 
                   alt={item.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-125 transition-transform duration-300"
+                  className="w-full h-full object-cover z-0"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-center">{item.title}</h3>
-              <p className="text-gray-600 text-center">{item.description}</p>
-            </div>
+              <div className="z-20 transition-all duration-700">
+                <h3 className="text-xl font-semibold mb-2 text-center group-hover:text-white transition-colors duration-500">{item.title}</h3>
+                <p className="text-gray-600 text-center group-hover:text-white transition-colors duration-500">{item.description}</p>
+              </div>
+              </div>
+            </ScrollAnimation>
           ))}
         </div>
       </div>

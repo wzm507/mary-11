@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ScrollAnimation from './ScrollAnimation';
 
 const AboutMe = () => {
   const navigate = useNavigate();
@@ -12,7 +13,8 @@ const AboutMe = () => {
 
   return (
     <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row gap-12 items-center">
+      <ScrollAnimation type="fade-in" duration={800} offset={50}>
+        <div className="flex flex-col md:flex-row gap-12 items-center">
         <div className="md:w-1/2 flex flex-col items-start text-left">
           <div className="mb-10">
             <h2 className="text-3xl font-extrabold tracking-wider mb-2 text-left">{t('aboutMe')}</h2>
@@ -42,7 +44,8 @@ const AboutMe = () => {
             <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-amber-100 rounded-lg z-[-1]"></div>
           </div>
         </div>
-      </div>
+        </div>
+      </ScrollAnimation>
     </div>
   );
 };

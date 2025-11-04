@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useTranslation } from 'react-i18next';
+import ScrollAnimation from '@/components/ScrollAnimation';
 
 const FeaturedListings = () => {
   const { t } = useTranslation();
@@ -82,18 +83,22 @@ const FeaturedListings = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {properties.map((property, index) => (
-          <div 
+          <ScrollAnimation 
             key={index} 
-            className="relative aspect-video overflow-hidden rounded-xl shadow-lg group"
+            type="fade-up" 
+            duration={700} 
+            delay={index * 150} 
+            offset={80}
+            className="relative aspect-video overflow-hidden rounded-xl shadow-lg group transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1"
           >
             <img 
               src={property.image} 
               alt={property.title} 
-              className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
             />
             
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/50 flex flex-col justify-center p-3 text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <div className="transform translate-y-0 transition-transform duration-300">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/50 flex flex-col justify-center p-3 text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
+              <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                 <h3 className="text-lg font-bold mb-1 text-center">{property.title}</h3>
                 <p className="text-gray-300 text-xs mb-1 text-center">{property.address}</p>
                 <p className="text-base font-bold mb-2 text-center text-amber-400">{property.price}</p>
@@ -143,7 +148,7 @@ const FeaturedListings = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollAnimation>
         ))}
       </div>
 
