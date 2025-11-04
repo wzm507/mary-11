@@ -258,6 +258,7 @@ i18n
           "developerProjects.becomePartner": "Become a Partner",
           "developerProjects.becomePartnerDesc": "We welcome more quality developers to join our cooperation network and jointly explore the Middle East real estate market.",
           "developerProjects.applyNow": "Apply Now",
+        "developerProjects.viewProjects": "View Projects",
           
           // Mary Projects Translations
           "maryProjects.title": "Mary's Featured Projects",
@@ -272,8 +273,11 @@ i18n
           "maryProjects.propertyInfo": "Property Info",
           "maryProjects.soldOut": "Sold Out",
           "maryProjects.bedroom": "Bedroom",
+          "maryProjects.bedrooms": "Bedrooms",
           "maryProjects.bathroom": "Bathroom",
+          "maryProjects.bathrooms": "Bathrooms",
           "maryProjects.squareFeet": "Square Feet",
+          "maryProjects.sqFt": "SqFt",
           
           // Property Card Dialog Translations
           "propertyCard.bookConsultation": "Book Consultation",
@@ -728,6 +732,7 @@ i18n
           "developerProjects.becomePartner": "成为合作伙伴",
           "developerProjects.becomePartnerDesc": "我们欢迎更多优质开发商加入我们的合作网络，共同开拓中东房地产市场。",
           "developerProjects.applyNow": "申请合作",
+        "developerProjects.viewProjects": "查看项目",
           
           // Mary Projects Translations
           "maryProjects.title": "Mary精选项目",
@@ -742,8 +747,11 @@ i18n
           "maryProjects.propertyInfo": "房源信息",
           "maryProjects.soldOut": "已售空",
           "maryProjects.bedroom": "卧室",
+          "maryProjects.bedrooms": "卧室",
           "maryProjects.bathroom": "浴室",
+          "maryProjects.bathrooms": "浴室",
           "maryProjects.squareFeet": "平方英尺",
+          "maryProjects.sqFt": "平方英尺",
           
           // Property Card Dialog Translations
           "propertyCard.bookConsultation": "预约咨询",

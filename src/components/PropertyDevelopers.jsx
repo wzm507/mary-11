@@ -56,20 +56,38 @@ const PropertyDevelopers = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
           {developers.map((property, index) => (
             <div 
               key={index} 
-              className="relative overflow-hidden rounded-xl shadow-lg group w-full mx-auto aspect-square"
+              className="relative overflow-hidden rounded-xl shadow-lg group w-full mx-auto aspect-square cursor-pointer transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              onClick={() => {
+                // 这里可以添加点击事件，例如导航到特定开发者页面
+                goToDeveloperProjects();
+              }}
             >
               <img 
                 src={property.image} 
                 alt={property.developerName} 
-                className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-amber-300 font-medium text-lg">{property.developerName}</p>
+              {/* 添加一个半透明的叠加层，增强悬停效果 */}
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* 增强文字区域的视觉效果 */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="text-white font-bold text-lg mb-1">{property.developerName}</p>
+                  {/* 添加一个小箭头，暗示可点击 */}
+                  <div className="flex items-center text-amber-400">
+                      <span className="text-sm">{t('developerProjects.viewProjects')}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 transform transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                </div>
               </div>
+              {/* 添加边框高亮效果 */}
+              <div className="absolute inset-0 border-2 border-amber-400 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
             </div>
           ))}
         </div>

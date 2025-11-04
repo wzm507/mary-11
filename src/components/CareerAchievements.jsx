@@ -159,7 +159,7 @@ KLF是一家专注中东地产领域的数字营销与科技服务公司，致�
               offset={80}
             >
               <div 
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col items-center group cursor-pointer relative overflow-hidden"
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col items-center group cursor-pointer relative overflow-hidden h-full"
                 onClick={() => handleCardClick(item.id)}
               >
               <div className="w-20 h-20 rounded-full overflow-hidden mb-4 flex items-center justify-center relative z-0 transition-all duration-700 group-hover:scale-[10] group-hover:rounded-none">

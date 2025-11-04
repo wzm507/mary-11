@@ -2,6 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 路由过渡动画样式 */
+.page-transition-container {
+  transition: opacity 1.2s ease-in-out;
+  opacity: 1; /* 默认完全可见 */
+}
+
+.page-transition-container.page-transition-enter {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page-transition-exit {
+  opacity: 0;
+}
+
+/* 为按钮添加导航状态样式 */
+.btn-nav {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-nav::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-nav:hover::after {
+  left: 100%;
+}
+
+.btn-nav:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
 @layer base {
 :root {
     --background: 0 0% 100%;

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { useNavigate } from 'react-router-dom';
+import { useAnimatedNavigation } from './RouteTransition';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Input } from '@/components/ui/input';
@@ -22,7 +22,7 @@ const PropertyCard = ({ property }) => {
     email: '',
     message: ''
   });
-  const navigate = useNavigate();
+  const { navigate } = useAnimatedNavigation();
 
   const handleConsultClick = (e) => {
     e.stopPropagation();
@@ -87,7 +87,7 @@ const PropertyCard = ({ property }) => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-                <span className="text-xs">{property.beds} {t('maryProjects.bedroom')}</span>
+                <span className="text-xs">{property.beds} {t('maryProjects.bedrooms')}</span>
               </div>
             </div>
             
@@ -96,7 +96,7 @@ const PropertyCard = ({ property }) => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span className="text-xs">{property.baths} {t('maryProjects.bathroom')}</span>
+                <span className="text-xs">{property.baths} {t('maryProjects.bathrooms')}</span>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ const PropertyCard = ({ property }) => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5" />
               </svg>
-              <span className="text-xs">{property.sqft} {t('maryProjects.squareFeet')}</span>
+              <span className="text-xs">{property.sqft} {t('maryProjects.sqFt')}</span>
             </div>
           </div>
           
@@ -122,14 +122,14 @@ const PropertyCard = ({ property }) => {
             ) : (
               <button 
                     onClick={handleConsultClick}
-                    className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition"
+                    className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition btn-nav"
                   >
                     {t('maryProjects.consultNow')}
                   </button>
             )}
             <button 
                     onClick={handleDetailsClick}
-                    className="bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium transition"
+                    className="bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium transition btn-nav"
                   >
                     {t('maryProjects.propertyInfo')}
                   </button>

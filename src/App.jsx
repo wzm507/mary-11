@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { navItems } from "./nav-items";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import RouteTransition from "./components/RouteTransition";
 import "./i18n";
 import { Suspense } from 'react';
 
@@ -18,7 +19,15 @@ const App = () => (
           <HashRouter>
             <Routes>
               {navItems.map(({ to, page }) => (
-                <Route key={to} path={to} element={page} />
+                <Route 
+                  key={to} 
+                  path={to} 
+                  element={
+                    <RouteTransition>
+                      {page}
+                    </RouteTransition>
+                  } 
+                />
               ))}
             </Routes>
           </HashRouter>
