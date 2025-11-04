@@ -86,8 +86,7 @@ const PropertyDevelopers = () => {
                     </div>
                 </div>
               </div>
-              {/* 添加边框高亮效果 */}
-              <div className="absolute inset-0 border-2 border-amber-400 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+
             </div>
           ))}
         </div>
