@@ -8,6 +8,7 @@ import {
   prodHtmlTransformer,
 } from '@meituan-nocode/vite-plugin-nocode-html-transformer';
 import react from '@vitejs/plugin-react';
+import Sitemap from 'vite-plugin-sitemap';
 
 const CHAT_VARIABLE = process.env.CHAT_VARIABLE || '';
 const PUBLIC_PATH = process.env.PUBLIC_PATH || '';
@@ -19,8 +20,18 @@ const publicPath = (isProdEnv && CHAT_VARIABLE)
 const outDir = (isProdEnv && CHAT_VARIABLE) ? 'build/' + CHAT_VARIABLE : 'build';
 const plugins = isProdEnv
   ? CHAT_VARIABLE
-    ? [react(), prodHtmlTransformer(CHAT_VARIABLE)]
-    : [react()]
+    ? [react(), prodHtmlTransformer(CHAT_VARIABLE), Sitemap({
+        hostname: 'https://mary-11.vercel.app',
+        outDir: outDir,
+        include: ['/**'],
+        generateRobotsTxt: false // 禁用自动生成robots.txt，避免构建错误
+      })]
+    : [react(), Sitemap({
+        hostname: 'https://mary-11.vercel.app',
+        outDir: outDir,
+        include: ['/'],
+        generateRobotsTxt: false // 禁用自动生成robots.txt，避免构建错误
+      })]
   : [
       devLogger({
         dirname: resolve(tmpdir(), '.nocode-dev-logs'),

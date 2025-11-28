@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ArticleSchema from '../components/ArticleSchema'; // 导入文章结构化数据组件
 
 const CareerDetail = () => {
   const { state } = useLocation();
@@ -381,7 +382,19 @@ const CareerDetail = () => {
   };
 
   return (
-    <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+    <>
+      {/* 添加文章结构化数据 */}
+      <ArticleSchema 
+        article={{
+          title: state.title || t(`careerAchievements.${state.id}.title`),
+          description: state.description || t(`careerAchievements.${state.id}.description`),
+          url: window.location.href,
+          author: { name: 'Mary Lee' },
+          datePublished: '2024-01-01',
+          dateModified: '2024-01-01'
+        }} 
+      />
+      <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row gap-12">
         <div className="md:w-1/3">
           <div className="sticky top-6">
@@ -414,6 +427,7 @@ const CareerDetail = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

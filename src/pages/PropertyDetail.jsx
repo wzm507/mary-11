@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
+import PropertySchema from '../components/PropertySchema'; // 导入结构化数据组件
 
 const PropertyDetail = () => {
   const { state } = useLocation();
@@ -614,7 +615,10 @@ const PropertyDetail = () => {
   };
 
   return (
-    <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+    <>
+      {/* 添加房产结构化数据 */}
+      <PropertySchema property={state} />
+      <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
       <div className="flex flex-col items-center text-center mb-16">
         <h1 className="text-4xl font-extrabold tracking-wider mb-6">{state.title}</h1>
         <p className="text-2xl font-bold text-amber-500 mb-6">{state.price}</p>
@@ -710,6 +714,7 @@ const PropertyDetail = () => {
         </DialogContent>
       </Dialog>
     </div>
+    </>
   );
 };
 
